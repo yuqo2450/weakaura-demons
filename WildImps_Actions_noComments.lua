@@ -34,7 +34,6 @@ function aura_env.GetImpValue(allstates,caster)
         allstates[caster].show = false;
         allstates[caster].changed = true;
         allstates[caster] = nil;
-        aura_env.impCount = aura_env.impCount - 1;
     end
     return true;
 end
