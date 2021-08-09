@@ -5,9 +5,9 @@ function aura_env.AddImp(allstates,petSumd,petType)
     local expTime;
     
     if aura_env.lastTyrant > GetTime() then
-        expTime = aura_env.lastTyrant + 20;
+        expTime = aura_env.lastTyrant + 41;
     else
-        expTime = GetTime() + 20;
+        expTime = GetTime() + 41;
     end
     
     --Create new entry in the allstates table
