@@ -12,13 +12,13 @@ function(allstates,event,_,subEvent,...)
 
         elseif petType == "Demonic Tyrant" then
             
-            aura_env.TyrantSummoned(allstates,subEvent,4);
-
+            aura_env.TyrantSummoned(allstates,aura_env.tyrantCast);
+ 
         else
             return true;
         end
     end
-        
+
     if subEvent == "SPELL_CAST_SUCCESS" then
 
         local _,caster,creature,_,_,_,_,_,_,spell = ...;
@@ -32,9 +32,9 @@ function(allstates,event,_,subEvent,...)
             aura_env.ClearImps(allstates);
 
         elseif creature == UnitName("player") and spell == 265187 then
-
-            aura_env.TyrantSummoned(allstates,subEvent,15)
-
+            
+            aura_env.tyrantCast = true;
+                        
         else
             return true;
         end

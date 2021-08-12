@@ -1,4 +1,5 @@
 aura_env.lastTyrant = GetTime();
+aura_env.castTyrant = false;
 
 function aura_env.AddImp(allstates,petSumd,petType)
 
@@ -29,6 +30,7 @@ function aura_env.GetImpValue(allstates,caster)
 
     allstates[caster].value = allstates[caster].value - 20;
     allstates[caster].changed = true;
+    allstates[caster].casting = false;
 
     if allstates[caster].value <= 0 then
         allstates[caster].show = false;
@@ -49,25 +51,22 @@ function aura_env.ClearImps(allstates)
     return true;
 end
 
-function aura_env.TyrantSummoned(allstates,subEvent,seconds)
+function aura_env.TyrantSummoned(allstates)
 
-    if subEvent == "SPELL_CAST_SUCCESS" then
+    local seconds
 
-        local _,_,_,_,talentSelected = 4, GetTalentInfo(7, 2, 1);        
-        aura_env.lastTyrant = GetTime() + seconds;
-
-        if talentSelected then
-            aura_env.ClearImps(allstates);
-        end        
-
+    if aura_env.tyrantCast then
+        seconds = 15;
+        aura_env.tyrantCast = false;
     else
-
-        if aura_env.lastTyrant < GetTime() + seconds then
-            aura_env.lastTyrant = GetTime() + seconds;
-        end
-        aura_env.ExtendImpDuartion(allstates,seconds);
-
+        seconds = 5,25;
     end
+
+    if aura_env.lastTyrant < GetTime() + seconds then
+        aura_env.lastTyrant = GetTime() + seconds;
+    end
+    aura_env.ExtendImpDuartion(allstates,seconds);
+
     return true;
 end
 
@@ -77,10 +76,12 @@ function aura_env.GetTyrantActive(allstates)
         for _,state in pairs(allstates) do
             state.tyrantActive = true;
         end
+        return true;
     else
         for _,state in pairs(allstates) do
             state.tyrantActive = false;
         end
+        return false;
     end
 end
 
