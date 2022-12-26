@@ -1,16 +1,21 @@
-= Second Power Bar
+= Demons
 :sectnums: |,all|
 :toc: auto
 :hardbreaks-option:
 
 == General
-General info.
+This weakaura displays a progressbar for each Wild Imp or Dreadstalker summond. The displays of these progressbars are highly customizeable with the default options in the WeakAuras GUI.
 
 == Usage
-=== Install
-How to install.
+=== Installation
+To use this aura, copy the string from https://github.com/yuqo2450/wow_wa_demons/blob/main/Minions.txt[Minions.txt] and import it in WeakAuras.
 
-=== Customize
-Customization options.
+=== Wild Imps
+The Aura is structured by a dynamic group that contains two progressbars for Wild Imps and Dreadstalkers. If you want to display only one of those, just unload the one you don't want to display via the default WeakAura GUI settings.
+The value displayed for each Wild Imp is the power that is used for the Wild Imp fire bolt. Each bolt consumes 20 Energy when they run out of Energy they will disappear.
+
+=== Dreadstalkers
+Dreadstalkers are timebased, therefore the progress value refelcts the time until they disappear.
 
 == Known Issues
+* Not updated to the new 10.0.0 Talent System
