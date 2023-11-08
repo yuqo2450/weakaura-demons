@@ -13,7 +13,7 @@ function(allstates,event,_,subEvent,...)
   end
 
   if subEvent == "SPELL_CAST_SUCCESS" and caster == UnitName("player") and spell == 265187 then
-    aura_env.SetTime(allstates);
+    aura_env.UpdateOnTyrant(allstates);
     return true;
   end
 end

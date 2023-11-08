@@ -11,7 +11,7 @@ function aura_env.CreateStates(allstates,creature,petName)
   };
 end
 
-function aura_env.SetTime(allstates)
+function aura_env.UpdateOnTyrant(allstates)
   for _,state in pairs(allstates) do
     state.expirationTime = state.expirationTime + 15;
     state.changed = true;
