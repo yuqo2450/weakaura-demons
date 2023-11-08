@@ -1,5 +1,5 @@
 --[[ events: CLEU:SPELL_SUMMON:SPELL_CAST_SUCCESS ]]
-function(allstates,event,_,subEvent,...)
+function(allstates,event,time,subEvent,...)
   local unit = select(3,...);
   local creature = select(6,...);
   local pet = select(11,...);
