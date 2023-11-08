@@ -16,21 +16,22 @@ function(allstates,event,_,subEvent,...)
     if petType == "Wild Imp" then
       aura_env.AddImp(allstates,petSumd,petType);
     elseif petType == "Demonic Tyrant" then
-      aura_env.TyrantSummoned(allstates,aura_env.tyrantCast);
+      aura_env.TyrantSummoned(allstates);
     else
-      return true;
+      return false;
     end
   end
 
   if subEvent == "SPELL_CAST_SUCCESS" then
     if allstates[unit] and not allstates[unit].tyrantActive then
       aura_env.GetImpValue(allstates,unit);
-    elseif creature == UnitName("player") and spell == 196277 then
+    end
+    if spell == 196277 then
       aura_env.ClearImps(allstates);
-    elseif creature == UnitName("player") and spell == 265187 then
+    elseif spell == 265187 then
       aura_env.tyrantCast = true;
     else
-      return true;
+      return false;
     end
   end
 
