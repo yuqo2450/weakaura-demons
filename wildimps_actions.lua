@@ -1,25 +1,21 @@
 aura_env.lastTyrant = GetTime();
 aura_env.castTyrant = false;
 
-function aura_env.AddImp(allstates,petSumd,petType)
-  local expTime;
+function aura_env.AddImp(allstates,creature,petType)
+  local duration = 21.5;
+  local expTime = GetTime() + duration;
 
-  if aura_env.lastTyrant > GetTime() then
-    expTime = aura_env.lastTyrant + 41;
-  else
-    expTime = GetTime() + 41;
-  end
-
-  allstates[petSumd] = {
+  allstates[creature] = {
     show = true,
     progressType = "static",
     icon = 460856,
     tyrantActive = aura_env.lastTyrant > GetTime() and true or false,
     total = 100,
     value = 100,
-    name = petType,
-    duration = expTime - GetTime(),
-      expirationTime = expTime,
+    name = creature,
+    duration = duration,
+    expirationTime = expTime,
+    autoHide = true,
   }
 
   return true;
@@ -42,7 +38,6 @@ function aura_env.ClearImps(allstates)
   for imp,state in pairs(allstates) do
     state.show = false;
     state.changed = true;
-    imp = nil;
   end
   return true;
 end
@@ -85,4 +80,14 @@ function aura_env.ExtendImpDuartion(allstates,seconds)
     state.tyrantActive = true;
     state.changed = true;
   end
+end
+
+function aura_env.RemoveExpImps(allstates)
+  for imp,state in pairs(allstates) do
+    if state.expirationTime <= GetTime() then
+      state.show = false;
+      state.changed = true;
+    end
+  end
+  return true;
 end
