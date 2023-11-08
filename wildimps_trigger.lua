@@ -23,10 +23,12 @@ function(allstates,event,time,subEvent,...)
   end
 
   if subEvent == "SPELL_CAST_SUCCESS" then
-    if allstates[unit] and not allstates[unit].tyrantActive then
-      aura_env.GetImpValue(allstates,unit);
-    end
-    if spell == 196277 and unit == UnitFullName("player").."-"..GetRealmName() then
+    if spell == 104318 then
+      local imp = select(2,...);
+      if allstates[imp] ~= nil then
+        aura_env.GetImpValue(allstates,imp);
+      end
+    elseif spell == 196277 and unit == UnitFullName("player").."-"..GetRealmName() then
       aura_env.ClearImps(allstates);
     elseif spell == 265187 and unit == UnitFullName("player").."-"..GetRealmName() then
       aura_env.tyrantCast = true;

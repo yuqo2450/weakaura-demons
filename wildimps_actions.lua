@@ -4,14 +4,14 @@ aura_env.castTyrant = false;
 function aura_env.AddImp(allstates,creature,petType)
   local duration = 21.5;
   local expTime = GetTime() + duration;
+  local power = 120;
 
   allstates[creature] = {
     show = true,
     progressType = UnitAffectingCombat("player") and "static" or "timed",
     icon = 460856,
-    tyrantActive = aura_env.lastTyrant > GetTime() and true or false,
-    total = 100,
-    value = 100,
+    total = power,
+    value = power,
     name = petType,
     duration = duration,
     expirationTime = expTime,
@@ -24,7 +24,7 @@ end
 function aura_env.GetImpValue(allstates,caster)
   allstates[caster].value = allstates[caster].value - 20;
   allstates[caster].changed = true;
-  allstates[caster].casting = false;
+  -- allstates[caster].casting = false;
 
   if allstates[caster].value <= 0 then
     allstates[caster].show = false;
