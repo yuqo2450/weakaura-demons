@@ -54,7 +54,7 @@ function aura_env.TyrantSummoned(allstates)
     seconds = 15;
     aura_env.tyrantCast = false;
   else
-    seconds = 5,25;
+    seconds = 5.25;
   end
 
   if aura_env.lastTyrant < GetTime() + seconds then
