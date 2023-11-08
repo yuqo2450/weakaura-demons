@@ -6,6 +6,7 @@ function(allstates,event,time,subEvent,...)
 
   if next(allstates) then
     aura_env.RemoveExpImps(allstates);
+    aura_env.SetProgressType(allstates);
   end
 
   if subEvent == "SPELL_SUMMON" and unit == UnitFullName("player").."-"..GetRealmName() then

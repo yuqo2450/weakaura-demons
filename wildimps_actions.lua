@@ -7,12 +7,12 @@ function aura_env.AddImp(allstates,creature,petType)
 
   allstates[creature] = {
     show = true,
-    progressType = "static",
+    progressType = UnitAffectingCombat("player") and "static" or "timed",
     icon = 460856,
     tyrantActive = aura_env.lastTyrant > GetTime() and true or false,
     total = 100,
     value = 100,
-    name = creature,
+    name = petType,
     duration = duration,
     expirationTime = expTime,
     autoHide = true,
@@ -90,4 +90,11 @@ function aura_env.RemoveExpImps(allstates)
     end
   end
   return true;
+end
+
+function aura_env.SetProgressType(allstates)
+  for imp,state in pairs(allstates) do
+    state.progressType = UnitAffectingCombat("player") and "static" or "timed";
+    state.changed = true;
+  end
 end
