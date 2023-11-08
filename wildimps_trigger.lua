@@ -1,10 +1,19 @@
+--[[ events: CLEU:SPELL_SUMMON:SPELL_CAST_SUCCESS ]]
 function(allstates,event,_,subEvent,...)
+  local unit = select(3,...);
+  local creature = select(4,...);
+  local spell = select(10,...);
   aura_env.GetTyrantActive(allstates);
 
-  if subEvent == "SPELL_SUMMON" then
-    local _,_,playerName,_,_,petSumd,petType = ...;
+  if unit ~= UnitFullName("player").."-"..GetRealmName() then
+    return false;
+  end
 
-    if petType == "Wild Imp" and playerName == UnitName("player") then
+  if subEvent == "SPELL_SUMMON" then
+    local petSumd = select(6,...);
+    local petType = select(7,...);
+
+    if petType == "Wild Imp" then
       aura_env.AddImp(allstates,petSumd,petType);
     elseif petType == "Demonic Tyrant" then
       aura_env.TyrantSummoned(allstates,aura_env.tyrantCast);
@@ -14,10 +23,8 @@ function(allstates,event,_,subEvent,...)
   end
 
   if subEvent == "SPELL_CAST_SUCCESS" then
-    local _,caster,creature,_,_,_,_,_,_,spell = ...;
-
-    if allstates[caster] and not allstates[caster].tyrantActive then
-      aura_env.GetImpValue(allstates,caster);
+    if allstates[unit] and not allstates[unit].tyrantActive then
+      aura_env.GetImpValue(allstates,unit);
     elseif creature == UnitName("player") and spell == 196277 then
       aura_env.ClearImps(allstates);
     elseif creature == UnitName("player") and spell == 265187 then
