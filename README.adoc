@@ -4,7 +4,7 @@
 :hardbreaks-option:
 
 == General
-This weakaura displays a progressbar for each Wild Imp or Dreadstalker summond. The displays of these progressbars are highly customizeable with the default options in the WeakAuras GUI.
+This WeakAura displays a progressbar for each Wild Imp or Dreadstalker summoned. The displays of these progressbars are highly customizable with the default options in the WeakAuras GUI.
 
 == Usage
 === Installation
@@ -15,6 +15,6 @@ The Aura is structured by a dynamic group that contains two progressbars for Wil
 The value displayed for each Wild Imp is the power that is used for the Wild Imp fire bolt. Each bolt consumes 20 Energy when they run out of Energy they will disappear.
 
 === Dreadstalkers
-Dreadstalkers are timebased, therefore the progress value refelcts the time until they disappear.
+Dreadstalkers are time based, therefore the progress value reflects the time until they disappear.
 
 == Known Issues
