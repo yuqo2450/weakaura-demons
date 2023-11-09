@@ -19,6 +19,10 @@ function aura_env.AddImp(allstates,imp,demon)
 end
 
 function aura_env.SetImpValue(allstates,imp)
+  if aura_env.GetTyrantActive() then
+    return false;
+  end
+
   allstates[imp].value = allstates[imp].value - 20;
   allstates[imp].changed = true;
 
@@ -37,30 +41,18 @@ function aura_env.ClearImps(allstates)
   return true;
 end
 
-function aura_env.TyrantSummoned(allstates)
-  local seconds
-
-  if aura_env.tyrantCast then
-    seconds = 15;
-    aura_env.tyrantCast = false;
-  else
-    seconds = 5.25;
-  end
-
-  if aura_env.lastTyrant < GetTime() + seconds then
-    aura_env.lastTyrant = GetTime() + seconds;
-  end
-  aura_env.ExtendImpDuartion(allstates,seconds);
-
-  return true;
-end
-
 function aura_env.GetTyrantActive()
   if aura_env.lastTyrant >= GetTime() then
     return true;
   else
     return false;
   end
+end
+
+function aura_env.SetLastTyrant(allstates)
+  local seconds = 15;
+  aura_env.lastTyrant = GetTime() + seconds;
+  aura_env.ExtendImpDuartion(allstates, seconds)
 end
 
 function aura_env.ExtendImpDuartion(allstates,seconds)

@@ -9,8 +9,6 @@ function(allstates,event,time,subEvent,...)
     return false;
   end
 
-  aura_env.GetTyrantActive();
-
   if next(allstates) then
     aura_env.ClearExpImps(allstates);
     aura_env.SetProgressType(allstates);
@@ -23,8 +21,7 @@ function(allstates,event,time,subEvent,...)
     if demon == "Wild Imp" then
       aura_env.AddImp(allstates,guidSummoned,demon);
     elseif demon == "Demonic Tyrant" then
-      aura_env.tyrantSummoned = true;
-      aura_env.TyrantSummoned(allstates);
+      aura_env.SetLastTyrant(allstates);
     else
       return false;
     end
