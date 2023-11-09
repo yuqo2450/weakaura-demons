@@ -28,7 +28,6 @@ function aura_env.GetImpValue(allstates,imp)
   if allstates[imp].value <= 0 then
     allstates[imp].show = false;
     allstates[imp].changed = true;
-    allstates[caster] = nil;
   end
   return true;
 end
