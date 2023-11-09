@@ -18,4 +18,3 @@ The value displayed for each Wild Imp is the power that is used for the Wild Imp
 Dreadstalkers are timebased, therefore the progress value refelcts the time until they disappear.
 
 == Known Issues
-* Not updated to the new 10.0.0 Talent System
