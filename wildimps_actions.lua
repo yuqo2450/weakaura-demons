@@ -63,9 +63,6 @@ function aura_env.GetTyrantActive()
   end
 end
 
-function aura_env.SetTyrantActive()
-end
-
 function aura_env.ExtendImpDuartion(allstates,seconds)
   local impsExtended = 0;
   for _,state in pairs(allstates) do
