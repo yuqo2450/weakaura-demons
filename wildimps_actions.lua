@@ -21,7 +21,7 @@ function aura_env.AddImp(allstates,imp,demon)
   return true;
 end
 
-function aura_env.GetImpValue(allstates,imp)
+function aura_env.SetImpValue(allstates,imp)
   allstates[imp].value = allstates[imp].value - 20;
   allstates[imp].changed = true;
 
@@ -80,7 +80,7 @@ function aura_env.ExtendImpDuartion(allstates,seconds)
   end
 end
 
-function aura_env.RemoveExpImps(allstates)
+function aura_env.ClearExpImps(allstates)
   for imp,state in pairs(allstates) do
     if state.expirationTime <= GetTime() then
       state.show = false;

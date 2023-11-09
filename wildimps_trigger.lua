@@ -5,7 +5,7 @@ function(allstates,event,time,subEvent,...)
   aura_env.GetTyrantActive(allstates);
 
   if next(allstates) then
-    aura_env.RemoveExpImps(allstates);
+    aura_env.ClearExpImps(allstates);
     aura_env.SetProgressType(allstates);
   end
 
@@ -22,7 +22,7 @@ function(allstates,event,time,subEvent,...)
     end
   elseif subEvent == "SPELL_CAST_SUCCESS" then
     if spell == 104318 and allstates[guidCaster] ~= nil then
-        aura_env.GetImpValue(allstates,guidCaster);
+        aura_env.SetImpValue(allstates,guidCaster);
     elseif spell == 196277 and guidCaster == UnitGUID("player") then
       aura_env.ClearImps(allstates);
     elseif spell == 265187 and guidCaster == UnitGUID("player") then
@@ -34,7 +34,7 @@ function(allstates,event,time,subEvent,...)
     local guidApplied = select(6,...);
     local demon = select(11,...);
     if spell == 387458 and allstates[guidApplied] ~= nil then
-      aura_env.SetImpType(allstates, guidApplied, demon)
+      aura_env.SetImpType(allstates, guidApplied, demon);
     end
   end
   return true;
