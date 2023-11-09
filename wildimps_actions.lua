@@ -14,7 +14,6 @@ function aura_env.AddImp(allstates,imp,demon)
     expirationTime = expTime,
     autoHide = true,
   }
-
   return true;
 end
 
@@ -54,6 +53,7 @@ function aura_env.SetLastTyrant(allstates)
   local seconds = 15;
   aura_env.lastTyrant = GetTime() + seconds;
   aura_env.ExtendImpDuartion(allstates, seconds)
+  return true;
 end
 
 function aura_env.ExtendImpDuartion(allstates,seconds)
@@ -67,6 +67,7 @@ function aura_env.ExtendImpDuartion(allstates,seconds)
       break;
     end
   end
+  return true;
 end
 
 function aura_env.ClearExpImps(allstates)
@@ -84,12 +85,14 @@ function aura_env.SetProgressType(allstates)
     state.progressType = UnitAffectingCombat("player") and "static" or "timed";
     state.changed = true;
   end
+  return true;
 end
 
 function aura_env.SetImpType(allstates, imp, demon)
   allstates[imp].name = demon;
   allstates[imp].icon = 615097;
   allstates[imp].changed = true;
+  return true;
 end
 
 function aura_env.SetBarColor()
