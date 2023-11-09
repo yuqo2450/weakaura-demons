@@ -19,7 +19,10 @@ function aura_env.AddImp(allstates,imp,demon)
 end
 
 function aura_env.SetImpValue(allstates,imp)
-  if aura_env.GetTyrantActive() then
+  if not aura_env.GetTyrantActive() then
+    allstates[imp].energyFrozen = false;
+  end
+  if allstates[imp].energyFrozen then
     return false;
   end
 
@@ -57,6 +60,7 @@ function aura_env.ExtendImpDuartion(allstates,seconds)
   local impsExtended = 0;
   for _,state in pairs(allstates) do
     state.expirationTime = state.expirationTime + seconds;
+    state.energyFrozen = true;
     state.changed = true;
     impsExtended = impsExtended + 1;
     if impsExtended == 10 then
