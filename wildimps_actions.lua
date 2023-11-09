@@ -1,6 +1,3 @@
-aura_env.lastTyrant = GetTime();
-aura_env.castTyrant = false;
-
 function aura_env.AddImp(allstates,imp,demon)
   local duration = 21.5;
   local expTime = GetTime() + duration;
@@ -58,25 +55,27 @@ function aura_env.TyrantSummoned(allstates)
   return true;
 end
 
-function aura_env.GetTyrantActive(allstates)
-  if aura_env.lastTyrant and (aura_env.lastTyrant >= GetTime()) then
-    for _,state in pairs(allstates) do
-      state.tyrantActive = true;
-    end
+function aura_env.GetTyrantActive()
+  if aura_env.lastTyrant >= GetTime() then
     return true;
   else
-    for _,state in pairs(allstates) do
-      state.tyrantActive = false;
-    end
     return false;
   end
 end
 
+function aura_env.SetTyrantActive()
+end
+
 function aura_env.ExtendImpDuartion(allstates,seconds)
+  local impsExtended = 0;
   for _,state in pairs(allstates) do
     state.expirationTime = state.expirationTime + seconds;
     state.tyrantActive = true;
     state.changed = true;
+    impsExtended = impsExtended + 1;
+    if impsExtended == 10 then
+      break;
+    end
   end
 end
 

@@ -1,8 +1,15 @@
---[[ events: CLEU:SPELL_SUMMON:SPELL_CAST_SUCCESS:SPELL_AURA_APPLIED,FRAME_UPDATE ]]
+--[[ events: PLAYER_ENTERING_WORLD,CLEU:SPELL_SUMMON:SPELL_CAST_SUCCESS:SPELL_AURA_APPLIED,FRAME_UPDATE ]]
 function(allstates,event,time,subEvent,...)
   local guidCaster = select(2,...);
   local spell = select(10,...);
-  aura_env.GetTyrantActive(allstates);
+
+  if event == "PLAYER_ENTERING_WORLD" then
+    aura_env.lastTyrant = GetTime();
+    aura_env.tyrantSummoned = false;
+    return false;
+  end
+
+  aura_env.GetTyrantActive();
 
   if next(allstates) then
     aura_env.ClearExpImps(allstates);
@@ -16,6 +23,7 @@ function(allstates,event,time,subEvent,...)
     if demon == "Wild Imp" then
       aura_env.AddImp(allstates,guidSummoned,demon);
     elseif demon == "Demonic Tyrant" then
+      aura_env.tyrantSummoned = true;
       aura_env.TyrantSummoned(allstates);
     else
       return false;
@@ -25,8 +33,6 @@ function(allstates,event,time,subEvent,...)
         aura_env.SetImpValue(allstates,guidCaster);
     elseif spell == 196277 and guidCaster == UnitGUID("player") then
       aura_env.ClearImps(allstates);
-    elseif spell == 265187 and guidCaster == UnitGUID("player") then
-      aura_env.tyrantCast = true;
     else
       return false;
     end
