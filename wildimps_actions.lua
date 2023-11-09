@@ -24,12 +24,10 @@ function aura_env.SetImpValue(allstates,imp)
   end
 
   allstates[imp].value = allstates[imp].value - 20;
-  allstates[imp].changed = true;
-
   if allstates[imp].value <= 0 then
     allstates[imp].show = false;
-    allstates[imp].changed = true;
   end
+  allstates[imp].changed = true;
   return true;
 end
 
@@ -59,7 +57,6 @@ function aura_env.ExtendImpDuartion(allstates,seconds)
   local impsExtended = 0;
   for _,state in pairs(allstates) do
     state.expirationTime = state.expirationTime + seconds;
-    state.tyrantActive = true;
     state.changed = true;
     impsExtended = impsExtended + 1;
     if impsExtended == 10 then
