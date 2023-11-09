@@ -1,18 +1,18 @@
 aura_env.lastTyrant = GetTime();
 aura_env.castTyrant = false;
 
-function aura_env.AddImp(allstates,creature,petType)
+function aura_env.AddImp(allstates,imp,demon)
   local duration = 21.5;
   local expTime = GetTime() + duration;
   local power = 120;
 
-  allstates[creature] = {
+  allstates[imp] = {
     show = true,
     progressType = UnitAffectingCombat("player") and "static" or "timed",
     icon = 460856,
     total = power,
     value = power,
-    name = petType,
+    name = demon,
     duration = duration,
     expirationTime = expTime,
     autoHide = true,
@@ -21,14 +21,13 @@ function aura_env.AddImp(allstates,creature,petType)
   return true;
 end
 
-function aura_env.GetImpValue(allstates,caster)
-  allstates[caster].value = allstates[caster].value - 20;
-  allstates[caster].changed = true;
-  -- allstates[caster].casting = false;
+function aura_env.GetImpValue(allstates,imp)
+  allstates[imp].value = allstates[imp].value - 20;
+  allstates[imp].changed = true;
 
-  if allstates[caster].value <= 0 then
-    allstates[caster].show = false;
-    allstates[caster].changed = true;
+  if allstates[imp].value <= 0 then
+    allstates[imp].show = false;
+    allstates[imp].changed = true;
     allstates[caster] = nil;
   end
   return true;
@@ -97,4 +96,20 @@ function aura_env.SetProgressType(allstates)
     state.progressType = UnitAffectingCombat("player") and "static" or "timed";
     state.changed = true;
   end
+end
+
+function aura_env.SetImpType(allstates, imp, demon)
+  allstates[imp].name = demon;
+  allstates[imp].icon = 615097;
+  allstates[imp].changed = true;
+end
+
+function aura_env.SetBarColor()
+  local color = aura_env.config.colorWildImp;
+
+  if aura_env.state.icon == 615097 then
+    color = aura_env.config.colorImpGangBoss;
+  end
+
+  return color[1],color[2],color[3],color[4];
 end
