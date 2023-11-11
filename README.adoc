@@ -4,18 +4,17 @@
 :hardbreaks-option:
 
 == General
-This weakaura displays a progressbar for each Wild Imp or Dreadstalker summond. The displays of these progressbars are highly customizeable with the default options in the WeakAuras GUI.
+This WeakAura displays a progressbar for each Wild Imp or Dreadstalker summoned. This will help to find the best spot to use `implosion` or `summon demonic tyrant`. The displays of these progressbars are highly customizable with the default options in the WeakAuras GUI.
 
 == Usage
 === Installation
-To use this aura, copy the string from https://github.com/yuqo2450/wow_wa_demons/blob/main/Minions.txt[Minions.txt] and import it in WeakAuras.
+To use this aura, copy the string from https://github.com/yuqo2450/wow_wa_demons/blob/main/wagio/import.txt[import.txt] and import it in WeakAuras.
 
 === Wild Imps
-The Aura is structured by a dynamic group that contains two progressbars for Wild Imps and Dreadstalkers. If you want to display only one of those, just unload the one you don't want to display via the default WeakAura GUI settings.
-The value displayed for each Wild Imp is the power that is used for the Wild Imp fire bolt. Each bolt consumes 20 Energy when they run out of Energy they will disappear.
+The Aura is structured by a dynamic group that contains two progressbars for Wild Imps and Dreadstalkers. If you want to display only one of those, just unload the other one via the default WeakAura GUI settings.
+The wild imps bar will switch between _timed_ and _static_ depending on the players combat state. Out of combat it will display the remaining time until the imp is dismissed. In combat it will show the imps remaining energy. Each cast consumes 20 energy from the maximum of 120. 
 
 === Dreadstalkers
-Dreadstalkers are timebased, therefore the progress value refelcts the time until they disappear.
+Dreadstalkers are time based, therefore the progress value reflects the time until they are dismissed.
 
 == Known Issues
-* Not updated to the new 10.0.0 Talent System
