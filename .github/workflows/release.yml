@@ -1,0 +1,20 @@
+name: New release
+run-name: Create new release.
+on:
+  push:
+    tags:
+      - v**
+
+jobs:
+  Release:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v4
+
+      - name: Create new release
+        uses: ncipollo/release-action@v1
+        with:
+          artifacts: "wagoio/import.txt"
