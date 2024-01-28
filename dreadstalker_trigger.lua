@@ -1,11 +1,11 @@
 --[[ events: CLEU:SPELL_SUMMON:SPELL_CAST_SUCCESS ]]
 function(allstates,event,time,subEvent,...)
-  local unit = select(3,...);
+  local guidCaster = select(2,...);
   local creature = select(6,...);
   local pet = select(11,...);
   local spell = select(10,...);
 
-  if unit ~= UnitFullName("player").."-"..GetRealmName() then
+  if guidCaster ~= UnitGUID("player") then
     return false;
   end
 
