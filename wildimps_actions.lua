@@ -34,7 +34,7 @@ function aura_env.SetImpValue(allstates,imp)
 end
 
 function aura_env.ClearImps(allstates)
-  for imp,state in pairs(allstates) do
+  for _,state in pairs(allstates) do
     state.show = false;
     state.changed = true;
   end
@@ -71,7 +71,7 @@ function aura_env.ExtendImpDuartion(allstates,seconds)
 end
 
 function aura_env.ClearExpImps(allstates)
-  for imp,state in pairs(allstates) do
+  for _,state in pairs(allstates) do
     if state.expirationTime <= GetTime() then
       state.show = false;
       state.changed = true;
@@ -81,7 +81,7 @@ function aura_env.ClearExpImps(allstates)
 end
 
 function aura_env.SetProgressType(allstates)
-  for imp,state in pairs(allstates) do
+  for _,state in pairs(allstates) do
     state.progressType = UnitAffectingCombat("player") and "static" or "timed";
     state.changed = true;
   end
