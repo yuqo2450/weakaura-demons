@@ -32,3 +32,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 [v10.2.0]: https://github.com/yuqo2450/wow_wa_demons/compare/v2.2....v10.2.0
 [v10.2.6]: https://github.com/yuqo2450/wow_wa_demons/compare/v10.2.5....v10.2.6
+[v10.2.7]: https://github.com/yuqo2450/wow_wa_demons/compare/v10.2.6....v10.2.7
